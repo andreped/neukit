@@ -14,6 +14,7 @@ app_file: app.py
 
 ## Demo <a target="_blank" href="https://huggingface.co/spaces/andreped/neukit"><img src="https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-yellow.svg"></a>
 
+![Screenshot 2023-06-05 at 17 31 48](https://github.com/andreped/neukit/assets/29090665/f184fda5-b9db-48fb-b096-dd589e8fce81)
 
 ## Setup
 
