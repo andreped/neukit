@@ -24,17 +24,11 @@ def run_model(input_path: str, model_path: str, verbose: str = "info", task: str
     extension = ".".join(splits[1:])
     patient_directory = "./patient/"
     os.makedirs(patient_directory + "T0/", exist_ok=True)
-    os.rename(input_path, patient_directory + "T0/" + splits[0] + "-t1gd." + extension)
+    shutil.copy(input_path, patient_directory + "T0/" + splits[0] + "-t1gd." + extension)
     
     # define output directory to save results
     output_path = "./result/prediction-" + splits[0] + "/"
     os.makedirs(output_path, exist_ok=True)
-
-    print("orig input:", input_path)
-    print("updated input:", patient_directory + "T0/" + splits[0] + "-t1gd." + extension)
-    print("patient_dir:", patient_directory)
-    print("output path:", output_path)
-    print("model path:", model_path)
 
     # Setting up the configuration file
     rads_config = configparser.ConfigParser()
@@ -64,7 +58,7 @@ def run_model(input_path: str, model_path: str, verbose: str = "info", task: str
         print(e)
     
     # rename and move final result
-    os.rename("./result/prediction-" + splits[0] + "/T0/" + splits[0] + "-t1gd_annotation-Tumor." + extension, "./prediction." + extension)
+    os.rename("./result/prediction-" + splits[0] + "/T0/" + splits[0] + "-t1gd_annotation-Tumor.nii.gz", "./prediction.nii.gz")
     
     # Clean-up
     if os.path.exists(patient_directory):

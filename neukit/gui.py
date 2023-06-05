@@ -21,7 +21,8 @@ class WebUI:
         self.volume_renderer = gr.Model3D(
             clear_color=[0.0, 0.0, 0.0, 0.0],
             label="3D Model",
-            visible=True
+            visible=True,
+            elem_id="model-3d",
         ).style(height=512)
 
     def combine_ct_and_seg(self, img, pred):
@@ -30,19 +31,13 @@ class WebUI:
     def upload_file(self, file):
         return file.name
     
-    def get_file_extension(self, file):
-        filename = file.split("/")[-1]
-        splits = filename.split(".")
-        return ".".join(splits[1:])
-    
     def load_mesh(self, mesh_file_name):
         path = mesh_file_name.name
-        extension = self.get_file_extension(path)
-        #run_model(path, model_path=self.cwd + "resources/models/")
-        #nifti_to_glb("prediction." + extension)
+        run_model(path, model_path=self.cwd + "resources/models/")
+        nifti_to_glb("prediction.nii.gz")
 
         self.images = load_ct_to_numpy(path)
-        self.pred_images = load_pred_volume_to_numpy("./prediction." + extension)
+        self.pred_images = load_pred_volume_to_numpy("./prediction.nii.gz")
         self.slider = self.slider.update(value=2)
         return "./prediction.obj"
     
@@ -53,11 +48,19 @@ class WebUI:
         return out
 
     def run(self):
-        with gr.Blocks() as demo:
+        css="""
+        #model-3d {
+        height: 512px;
+        }
+        #model-2d {
+        height: 512px;
+        margin: auto;
+        }
+        """
+        with gr.Blocks(css=css) as demo:
 
-            with gr.Row().style(equal_height=True):
+            with gr.Row():
                 file_output = gr.File(
-                    #file_types=[".nii", ".nii.gz"],
                     file_count="single"
                 ).style(full_width=False, size="sm")
                 file_output.upload(self.upload_file, file_output, file_output)
@@ -69,21 +72,21 @@ class WebUI:
                     outputs=self.volume_renderer
                 )
             
-            #with gr.Row().style(equal_height=True):
-                #gr.Examples(
-                #    examples=[self.cwd + "test-volume.nii"],
-                #    inputs=file_output,
-                #    outputs=file_output,
-                #    fn=self.upload_file,
-                #    cache_examples=True,
-                #)
+            with gr.Row():
+                gr.Examples(
+                    examples=[self.cwd + "test-volume.nii"],
+                    inputs=file_output,
+                    outputs=file_output,
+                    fn=self.upload_file,
+                    cache_examples=True,
+                )
             
-            with gr.Row().style(equal_height=True):
+            with gr.Row():
                 with gr.Box():
                     image_boxes = []
                     for i in range(self.nb_slider_items):
                         visibility = True if i == 1 else False
-                        t = gr.AnnotatedImage(visible=visibility)\
+                        t = gr.AnnotatedImage(visible=visibility, elem_id="model-2d")\
                             .style(color_map={self.class_name: "#ffae00"}, height=512, width=512)
                         image_boxes.append(t)
 
