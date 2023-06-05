@@ -7,7 +7,7 @@ on:               # or directly `on: [push]` to run the action on every push on 
   workflow_dispatch:
 
 jobs:
-  sync-to-hub:
+  check-filesize:
     runs-on: ubuntu-latest
     steps:
       - name: Check large files
