@@ -12,9 +12,8 @@ app_file: app.py
 
 # neukit
 
-## Usage
+## Demo <a target="_blank" href="https://huggingface.co/spaces/andreped/neukit"><img src="https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-yellow.svg"></a>
 
-The software will be made openly available on Hugging Face spaces very soon. Stay tuned for more!
 
 ## Setup
 
