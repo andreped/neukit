@@ -64,6 +64,9 @@ RUN wget "https://github.com/raidionics/Raidionics-models/releases/download/1.2.
     unzip "Raidionics-MRI_Meningioma-ONNX-v12.zip" && mkdir -p resources/models/ && mv MRI_Meningioma/ resources/models/MRI_Meningioma/
 
 # Download test sample
+RUN wget "https://github.com/andreped/neukit/releases/download/test-data/RegLib_C01_2.nii.gz"
+
+# Download test sample
 RUN pip install gdown && gdown "https://drive.google.com/uc?id=1shjSrFjS4PHE5sTku30PZTLPZpGu24o3"
 
 # CMD ["/bin/bash"]

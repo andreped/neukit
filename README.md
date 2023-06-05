@@ -21,7 +21,7 @@ The software will be made openly available on Hugging Face spaces very soon. Sta
 For development of this software, follow these steps to build the docker image and run the app through it:
 
 ```
-docker build -t neukit ..
+docker build -t neukit .
 docker run -it -p 7860:7860 neukit
 ```
 
