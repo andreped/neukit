@@ -37,7 +37,7 @@ COPY ./requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # resolve issue with tf==2.4 and gradio dependency collision issue
-RUN pip install --force-reinstall typing_extensions==4.0.0
+RUN pip install --force-reinstall typing_extensions==4.4.0
 
 # Install wget
 RUN apt install wget -y && \
