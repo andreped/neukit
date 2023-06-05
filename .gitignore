@@ -8,3 +8,4 @@ resources/
 *.obj
 *log.csv
 *.ini
+gradio_cached_examples/
