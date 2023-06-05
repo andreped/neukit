@@ -70,4 +70,4 @@ RUN wget "https://github.com/andreped/neukit/releases/download/test-data/RegLib_
 RUN pip install gdown && gdown "https://drive.google.com/uc?id=1shjSrFjS4PHE5sTku30PZTLPZpGu24o3"
 
 # CMD ["/bin/bash"]
-CMD ["python3", "demo/app.py"]
+CMD ["python3", "app.py"]
