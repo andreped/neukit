@@ -67,7 +67,10 @@ RUN wget "https://github.com/raidionics/Raidionics-models/releases/download/1.2.
 RUN wget "https://github.com/raidionics/Raidionics-models/releases/download/1.2.0/Raidionics-MRI_Metastasis-ONNX-v12.zip" && \
     unzip "Raidionics-MRI_Metastasis-ONNX-v12.zip" && mv MRI_Metastasis/ resources/models/MRI_Metastasis/
 RUN wget "https://github.com/raidionics/Raidionics-models/releases/download/1.2.0/Raidionics-MRI_GBM-ONNX-v12.zip" && \
-    wget "Raidionics-MRI_GBM-ONNX-v12.zip" && mv MRI_GBM/ resources/models/MRI_GBM/
+    unzip "Raidionics-MRI_GBM-ONNX-v12.zip" && mv MRI_GBM/ resources/models/MRI_GBM/
+RUN wget "https://github.com/raidionics/Raidionics-models/releases/download/1.2.0/Raidionics-MRI_Brain-ONNX-v12.zip" && \
+    unzip "Raidionics-MRI_Brain-ONNX-v12.zip" && mv MRI_Brain/ resources/models/MRI_Brain/
+RUN rm -r *.zip
 
 # Download test sample
 RUN wget "https://github.com/andreped/neukit/releases/download/test-data/RegLib_C01_1.nii" && \
