@@ -58,7 +58,6 @@ class WebUI:
 
         self.images = load_ct_to_numpy(path)
         self.pred_images = load_pred_volume_to_numpy("./prediction.nii.gz")
-        self.slider = self.slider.update(value=2)
         return "./prediction.obj"
     
     def get_img_pred_pair(self, k):
