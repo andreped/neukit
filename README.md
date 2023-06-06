@@ -4,7 +4,7 @@ colorFrom: indigo
 colorTo: indigo
 sdk: docker
 app_port: 7860
-emoji: 🔎
+emoji: 🧠
 pinned: false
 license: mit
 app_file: app.py
