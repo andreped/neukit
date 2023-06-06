@@ -6,6 +6,7 @@ resources/
 *.nii.gz
 *.nrrd
 *.obj
+*.zip
 *log.csv
 *.ini
 gradio_cached_examples/
