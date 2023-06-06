@@ -31,7 +31,7 @@ For postoperative tumor segmentation, standardized reporting, and better functio
 
 To access the live demo, click on the `Hugging Face` badge above. Below is a snapshot of the current state of the demo app.
 
-![Screenshot 2023-06-05 at 17 31 48](https://github.com/andreped/neukit/assets/29090665/f184fda5-b9db-48fb-b096-dd589e8fce81)
+<img width="1722" alt="Screenshot 2023-06-06 at 21 53 25" src="https://github.com/andreped/neukit/assets/29090665/e67f35c2-482b-409c-b1a9-bc987fbb5c6a">
 
 ## Development
 
