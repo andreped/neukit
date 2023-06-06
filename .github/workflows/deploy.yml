@@ -1,4 +1,4 @@
-name: Sync to Hugging Face hub
+name: Deploy HF
 on:
   push:
     branches: [ main ]
