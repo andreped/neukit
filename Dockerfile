@@ -62,9 +62,16 @@ COPY --chown=user . $HOME/app
 # Download pretrained parenchyma model
 RUN wget "https://github.com/raidionics/Raidionics-models/releases/download/1.2.0/Raidionics-MRI_Meningioma-ONNX-v12.zip" && \
     unzip "Raidionics-MRI_Meningioma-ONNX-v12.zip" && mkdir -p resources/models/ && mv MRI_Meningioma/ resources/models/MRI_Meningioma/
+RUN wget "https://github.com/raidionics/Raidionics-models/releases/download/1.2.0/Raidionics-MRI_LGGlioma-ONNX-v12.zip" && \
+    unzip "Raidionics-MRI_LGGlioma-ONNX-v12.zip" && mv MRI_LGGlioma/ resources/models/MRI_LGGlioma/
+RUN wget "https://github.com/raidionics/Raidionics-models/releases/download/1.2.0/Raidionics-MRI_Metastasis-ONNX-v12.zip" && \
+    unzip "Raidionics-MRI_Metastasis-ONNX-v12.zip" && mv MRI_Metastasis/ resources/models/MRI_Metastasis/
+RUN wget "https://github.com/raidionics/Raidionics-models/releases/download/1.2.0/Raidionics-MRI_GBM-ONNX-v12.zip" && \
+    wget "Raidionics-MRI_GBM-ONNX-v12.zip" && mv MRI_GBM/ resources/models/MRI_GBM/
 
 # Download test sample
-RUN wget "https://github.com/andreped/neukit/releases/download/test-data/RegLib_C01_2.nii"
+RUN wget "https://github.com/andreped/neukit/releases/download/test-data/RegLib_C01_1.nii" && \
+    wget "https://github.com/andreped/neukit/releases/download/test-data/RegLib_C01_2.nii"
 
 # Download test sample
 RUN pip install gdown && gdown "https://drive.google.com/uc?id=1shjSrFjS4PHE5sTku30PZTLPZpGu24o3"
