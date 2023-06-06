@@ -1,5 +1,5 @@
 ---
-title: 'neukit: automatic meningioma segmentation from T1-weighted MRI'
+title: 'neukit: automatic brain extraction and preoperative tumor segmentation from MRI'
 colorFrom: indigo
 colorTo: indigo
 sdk: docker
