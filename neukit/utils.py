@@ -9,7 +9,8 @@ def load_ct_to_numpy(data_path):
         data_path = data_path.name
 
     image = nib.load(data_path)
-    data = image.get_fdata()
+    resampled = resample_to_output(image, None, order=0)
+    data = resampled.get_fdata()
 
     data = np.rot90(data, k=1, axes=(0, 1))
 
@@ -29,7 +30,8 @@ def load_pred_volume_to_numpy(data_path):
         data_path = data_path.name
 
     image = nib.load(data_path)
-    data = image.get_fdata()
+    resampled = resample_to_output(image, None, order=0)
+    data = resampled.get_fdata()
 
     data = np.rot90(data, k=1, axes=(0, 1))
 
