@@ -1,5 +1,6 @@
-import gradio as gr
 import os
+
+import gradio as gr
 
 from .inference import run_model
 from .utils import load_ct_to_numpy
@@ -8,7 +9,12 @@ from .utils import nifti_to_glb
 
 
 class WebUI:
-    def __init__(self, model_name: str = None, cwd: str = "/home/user/app/", share: int = 1):
+    def __init__(
+        self,
+        model_name: str = None,
+        cwd: str = "/home/user/app/",
+        share: int = 1,
+    ):
         # global states
         self.images = []
         self.pred_images = []
@@ -166,4 +172,6 @@ class WebUI:
         # https://gradio.app/sharing-your-app/
         # inference times > 60 seconds -> need queue():
         # https://github.com/tloen/alpaca-lora/issues/60#issuecomment-1510006062
-        demo.queue().launch(server_name="0.0.0.0", server_port=7860, share=self.share)
+        demo.queue().launch(
+            server_name="0.0.0.0", server_port=7860, share=self.share
+        )
