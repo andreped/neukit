@@ -51,7 +51,7 @@ class WebUI:
     def upload_file(self, file):
         return file.name
     
-    def load_mesh(self, mesh_file_name):
+    def process(self, mesh_file_name):
         path = mesh_file_name.name
         run_model(path, model_path=self.cwd + "resources/models/", task=self.class_names[self.class_name], name=self.result_names[self.class_name])
         nifti_to_glb("prediction.nii.gz")
@@ -80,13 +80,9 @@ class WebUI:
         }
         """
         with gr.Blocks(css=css) as demo:
-
             with gr.Row():
-                
                 file_output = gr.File(file_count="single", elem_id="upload")  # elem_id="upload"
                 file_output.upload(self.upload_file, file_output, file_output)
-
-                # with gr.Column():
 
                 model_selector = gr.Dropdown(
                     list(self.class_names.keys()),
@@ -103,7 +99,7 @@ class WebUI:
 
                 run_btn = gr.Button("Run analysis").style(full_width=False, size="lg")
                 run_btn.click(
-                    fn=lambda x: self.load_mesh(x),
+                    fn=lambda x: self.process(x),
                     inputs=file_output,
                     outputs=self.volume_renderer,
                 )
@@ -119,20 +115,20 @@ class WebUI:
             
             with gr.Row():
                 with gr.Box():
-                    image_boxes = []
-                    for i in range(self.nb_slider_items):
-                        visibility = True if i == 1 else False
-                        t = gr.AnnotatedImage(visible=visibility, elem_id="model-2d")\
-                            .style(color_map={self.class_name: "#ffae00"}, height=512, width=512)
-                        image_boxes.append(t)
+                    with gr.Column():
+                        image_boxes = []
+                        for i in range(self.nb_slider_items):
+                            visibility = True if i == 1 else False
+                            t = gr.AnnotatedImage(visible=visibility, elem_id="model-2d")\
+                                .style(color_map={self.class_name: "#ffae00"}, height=512, width=512)
+                            image_boxes.append(t)
 
-                    self.slider.change(self.get_img_pred_pair, self.slider, image_boxes)
+                        self.slider.input(self.get_img_pred_pair, self.slider, image_boxes)
+
+                        self.slider.render()
                 
                 with gr.Box():
                     self.volume_renderer.render()
-            
-            with gr.Row():
-                self.slider.render()
 
         # sharing app publicly -> share=True: https://gradio.app/sharing-your-app/
         # inference times > 60 seconds -> need queue(): https://github.com/tloen/alpaca-lora/issues/60#issuecomment-1510006062
