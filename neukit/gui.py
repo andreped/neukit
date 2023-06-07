@@ -1,4 +1,5 @@
 import gradio as gr
+import os
 
 from .inference import run_model
 from .utils import load_ct_to_numpy
@@ -7,7 +8,7 @@ from .utils import nifti_to_glb
 
 
 class WebUI:
-    def __init__(self, model_name: str = None, cwd: str = "/home/user/app/"):
+    def __init__(self, model_name: str = None, cwd: str = "/home/user/app/", share: int = 1):
         # global states
         self.images = []
         self.pred_images = []
@@ -17,6 +18,7 @@ class WebUI:
 
         self.model_name = model_name
         self.cwd = cwd
+        self.share = share
 
         self.class_name = "meningioma"  # default
         self.class_names = {
@@ -64,7 +66,7 @@ class WebUI:
         path = mesh_file_name.name
         run_model(
             path,
-            model_path=self.cwd + "resources/models/",
+            model_path=os.path.join(self.cwd, "resources/models/"),
             task=self.class_names[self.class_name],
             name=self.result_names[self.class_name],
         )
@@ -127,8 +129,8 @@ class WebUI:
             with gr.Row():
                 gr.Examples(
                     examples=[
-                        self.cwd + "RegLib_C01_1.nii",
-                        self.cwd + "RegLib_C01_2.nii",
+                        os.path.join(self.cwd, "RegLib_C01_1.nii"),
+                        os.path.join(self.cwd, "RegLib_C01_2.nii"),
                     ],
                     inputs=file_output,
                     outputs=file_output,
@@ -164,4 +166,4 @@ class WebUI:
         # https://gradio.app/sharing-your-app/
         # inference times > 60 seconds -> need queue():
         # https://github.com/tloen/alpaca-lora/issues/60#issuecomment-1510006062
-        demo.queue().launch(server_name="0.0.0.0", server_port=7860, share=True)
+        demo.queue().launch(server_name="0.0.0.0", server_port=7860, share=self.share)
