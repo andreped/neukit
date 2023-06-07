@@ -81,7 +81,7 @@ class WebUI:
         """
         with gr.Blocks(css=css) as demo:
             with gr.Row():
-                file_output = gr.File(file_count="single", elem_id="upload")  # elem_id="upload"
+                file_output = gr.File(file_count="single", elem_id="upload")
                 file_output.upload(self.upload_file, file_output, file_output)
 
                 model_selector = gr.Dropdown(
