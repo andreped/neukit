@@ -1,5 +1,5 @@
-import numpy as np
 import nibabel as nib
+import numpy as np
 from nibabel.processing import resample_to_output
 from skimage.measure import marching_cubes
 
@@ -52,12 +52,16 @@ def nifti_to_glb(path, output="prediction.obj"):
     verts, faces, normals, values = marching_cubes(data, 0)
     faces += 1
 
-    with open(output, 'w') as thefile:
+    with open(output, "w") as thefile:
         for item in verts:
-            thefile.write("v {0} {1} {2}\n".format(item[0],item[1],item[2]))
+            thefile.write("v {0} {1} {2}\n".format(item[0], item[1], item[2]))
 
         for item in normals:
-            thefile.write("vn {0} {1} {2}\n".format(item[0],item[1],item[2]))
+            thefile.write("vn {0} {1} {2}\n".format(item[0], item[1], item[2]))
 
         for item in faces:
-            thefile.write("f {0}//{0} {1}//{1} {2}//{2}\n".format(item[0],item[1],item[2]))
+            thefile.write(
+                "f {0}//{0} {1}//{1} {2}//{2}\n".format(
+                    item[0], item[1], item[2]
+                )
+            )
