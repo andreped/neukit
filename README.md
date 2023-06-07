@@ -10,7 +10,7 @@ license: mit
 app_file: app.py
 ---
 
-<div align="center">
+<div align="center">M
 <h1 align="center">neukit</h1>
 <h3 align="center">Automatic brain extraction and preoperative tumor segmentation from MRI</h3>
 
@@ -36,6 +36,8 @@ To access the live demo, click on the `Hugging Face` badge above. Below is a sna
 
 ## Development
 
+### Docker
+
 Alternatively, you can deploy the software locally. Note that this is only relevant for development purposes. Simply dockerize the app and run it:
 
 ```
@@ -44,6 +46,28 @@ docker run -it -p 7860:7860 neukit
 ```
 
 Then open `http://127.0.0.1:7860` in your favourite internet browser to view the demo.
+
+### Python
+
+It is also possible to run the app locally without Docker. Just setup a virtual environment and run the app.
+Note that the current working directory would need to be adjusted based on where `neukit` is located on disk.
+
+```
+git clone https://github.com/andreped/neukit.git
+cd neukit/
+
+virtualenv -ppython3 venv --clear
+source venv/bin/activate
+pip install -r requirements.txt
+
+python app.py --cwd ./
+```
+
+## Troubleshooting
+
+Note that due to `share=True` being enabled by default when launching the app,
+internet access is required for the app to be launched. This can disabled by setting
+the argument to `--share 0`.
 
 ## Citation
 
