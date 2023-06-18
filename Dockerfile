@@ -76,8 +76,5 @@ RUN rm -r *.zip
 RUN wget "https://github.com/andreped/neukit/releases/download/test-data/RegLib_C01_1.nii" && \
     wget "https://github.com/andreped/neukit/releases/download/test-data/RegLib_C01_2.nii"
 
-# Download test sample
-RUN pip install gdown && gdown "https://drive.google.com/uc?id=1shjSrFjS4PHE5sTku30PZTLPZpGu24o3"
-
 # CMD ["/bin/bash"]
 CMD ["python3", "app.py"]
