@@ -63,9 +63,15 @@ pip install -r requirements.txt
 python app.py --cwd ./
 ```
 
+### CoLab
+
+To aid people developing in the cloud, we have made a simple Jupyter Notebook example which is hosted on Google CoLab.
+
+Click the badge above to access it. This is mainly of interest to developers.
+
 ## Troubleshooting
 
-Note that due to `share=True` being enabled by default when launching the app,
+Due to `share=True` being enabled by default when launching the app,
 internet access is required for the app to be launched. This can disabled by setting
 the argument to `--share 0`.
 
