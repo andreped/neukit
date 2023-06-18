@@ -10,7 +10,7 @@ license: mit
 app_file: app.py
 ---
 
-<div align="center">M
+<div align="center">
 <h1 align="center">neukit</h1>
 <h3 align="center">Automatic brain extraction and preoperative tumor segmentation from MRI</h3>
 
