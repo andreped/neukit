@@ -22,7 +22,7 @@ app_file: app.py
 
 </div>
 
-## Intro
+## Brief intro
 
 This web application enables users to test [Raidionics](https://raidionics.github.io/), which is an open-source, free-to-use desktop application for pre- and postoperative central nervous system tumor segmentation and standardized reporting. The app only supports single volume input and only demonstrates the segmentation results of the Raidionics software, and thus is only meant for demonstration purposes.
 
