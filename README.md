@@ -77,15 +77,32 @@ the argument to `--share 0`.
 
 ## Citation
 
-If you found the tool useful in your research, please, cite the corresponding software paper:
+If you found neukit relevant in your research, please cite the following references.
 
+The final software including updated performance metrics for preoperative tumors and introducing postoperative tumor segmentation:
 ```
-@misc{bouget2023raidionics,
-    title={Raidionics: an open software for pre- and postoperative central nervous system tumor segmentation and standardized reporting}, 
-    author={David Bouget and Demah Alsinan and Valeria Gaitan and Ragnhild Holden Helland and André Pedersen and Ole Solheim and Ingerid Reinertsen},
-    year={2023},
-    eprint={2305.14351},
-    archivePrefix={arXiv},
-    primaryClass={physics.med-ph}
+@article{bouget2023raidionics,
+    author = {Bouget, David and Alsinan, Demah and Gaitan, Valeria and Holden Helland, Ragnhild and Pedersen, André and Solheim, Ole and Reinertsen, Ingerid},
+    year = {2023},
+    month = {09},
+    pages = {},
+    title = {Raidionics: an open software for pre-and postoperative central nervous system tumor segmentation and standardized reporting},
+    volume = {13},
+    journal = {Scientific Reports},
+    doi = {10.1038/s41598-023-42048-7},
+}
+```
+
+For the preliminary preoperative tumor segmentation validation and software features:
+```
+@article{bouget2022preoptumorseg,
+    title={Preoperative Brain Tumor Imaging: Models and Software for Segmentation and Standardized Reporting},
+    author={Bouget, David and Pedersen, André and Jakola, Asgeir S. and Kavouridis, Vasileios and Emblem, Kyrre E. and Eijgelaar, Roelant S. and Kommers, Ivar and Ardon, Hilko and Barkhof, Frederik and Bello, Lorenzo and Berger, Mitchel S. and Conti Nibali, Marco and Furtner, Julia and Hervey-Jumper, Shawn and Idema, Albert J. S. and Kiesel, Barbara and Kloet, Alfred and Mandonnet, Emmanuel and Müller, Domenique M. J. and Robe, Pierre A. and Rossi, Marco and Sciortino, Tommaso and Van den Brink, Wimar A. and Wagemakers, Michiel and Widhalm, Georg and Witte, Marnix G. and Zwinderman, Aeilko H. and De Witt Hamer, Philip C. and Solheim, Ole and Reinertsen, Ingerid},
+    journal={Frontiers in Neurology},
+    volume={13},
+    year={2022},
+    url={https://www.frontiersin.org/articles/10.3389/fneur.2022.932219},
+    doi={10.3389/fneur.2022.932219},
+    issn={1664-2295}
 }
 ```
