@@ -26,7 +26,7 @@ RUN apt-get install python3-dev -y
 WORKDIR /code
 
 # install dependencies
-COPY .requirements.txt /code/requirements.txt
+COPY ./requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # resolve issue with tf==2.4 and gradio dependency collision issue
