@@ -1,22 +1,16 @@
 # read the doc: https://huggingface.co/docs/hub/spaces-sdks-docker
 # you will also find guides on how best to write your Dockerfile
-
-# creates virtual ubuntu in docker image
-FROM ubuntu:22.04
+FROM python:3.8-slim
 
 # set language, format and stuff
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
-# NOTE: using -y is conveniently to automatically answer yes to all the questions
-# installing python3 with a specific version
+WORKDIR /code
+
 RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt install software-properties-common -y
-RUN add-apt-repository ppa:deadsnakes/ppa -y
-RUN apt update
-RUN apt install python3.7 -y
-RUN apt install python3.7-distutils -y
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1
+#RUN apt-get install -y python3 python3-pip
+RUN apt install git --fix-missing -y
+RUN apt install wget -y
 
 # installing other libraries
 RUN apt-get install python3-pip -y && \
@@ -28,12 +22,11 @@ RUN apt-get install libblas-dev -y && apt-get install liblapack-dev -y
 RUN apt-get install gfortran -y
 RUN apt-get install libpng-dev -y
 RUN apt-get install python3-dev -y
-# RUN apt-get -y install cmake curl
 
 WORKDIR /code
 
 # install dependencies
-COPY ./requirements.txt /code/requirements.txt
+COPY .requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # resolve issue with tf==2.4 and gradio dependency collision issue
@@ -70,6 +63,7 @@ RUN wget "https://github.com/raidionics/Raidionics-models/releases/download/1.2.
     unzip "Raidionics-MRI_GBM-ONNX-v12.zip" && mv MRI_GBM/ resources/models/MRI_GBM/
 RUN wget "https://github.com/raidionics/Raidionics-models/releases/download/1.2.0/Raidionics-MRI_Brain-ONNX-v12.zip" && \
     unzip "Raidionics-MRI_Brain-ONNX-v12.zip" && mv MRI_Brain/ resources/models/MRI_Brain/
+
 RUN rm -r *.zip
 
 # Download test sample
