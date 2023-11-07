@@ -16,7 +16,8 @@ app_file: app.py
 
 [![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/DAVFoundation/captain-n3m0/blob/master/LICENSE)
 [![CI/CD](https://github.com/andreped/neukit/actions/workflows/deploy.yml/badge.svg)](https://github.com/andreped/neukit/actions/workflows/deploy.yml)
-<a target="_blank" href="https://huggingface.co/spaces/andreped/neukit"><img src="https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-yellow.svg"></a><a href="https://colab.research.google.com/gist/andreped/f83e53b120ddc2f6930f1dd66a16f248/neukit-demo-example.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<a target="_blank" href="https://huggingface.co/spaces/andreped/neukit"><img src="https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-yellow.svg"></a>
+<a href="https://colab.research.google.com/gist/andreped/f83e53b120ddc2f6930f1dd66a16f248/neukit-demo-example.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 **neukit** was developed by SINTEF Medical Image Analysis to accelerate medical AI research.
 
